@@ -1,21 +1,24 @@
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
 
 public class MainPage {
 
     WebDriver driver;
 
-
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
+
+    public void open(){ driver.get("https://www.delivery-club.ru/moscow");}
+
+
+
 
     // Форма поиска по тексту
     @FindBy(xpath = "//input[@class='vendors-suggests__input']")
@@ -43,12 +46,9 @@ public class MainPage {
     @FindBy(xpath = "//button[@class='green-btn filters-popup__btn']")
     public WebElement buttonCheckBoxesListFilter;
 
-    // ФИЛЬТРЫ (кнопочные)
-    @FindBy(xpath = "//a[@class='cuisines-panel__slide-btn']")
-    public List<WebElement>  buttonFilters;
-
 
     //Выбрать фильты (чекбоксы)
+    public void clickFiltersPanelButton(){ filtersPanel.click(); }
     public void selectCheckBoxesFilter() {                // все чекбоксы
         for (WebElement checkbox : checkBoxesFilter) {
             checkbox.click();
@@ -65,6 +65,12 @@ public class MainPage {
         buttonCheckBoxesListFilter.click();
     }
 
+
+
+    // ФИЛЬТРЫ (кнопочные)
+    @FindBy(xpath = "//a[@class='cuisines-panel__slide-btn']")
+    public List<WebElement>  buttonFilters;
+
     //Выбрать фильты (кнопочные)
     public void selectButtonFilters() {                // все кнопки
         for (WebElement button : buttonFilters) {
@@ -78,7 +84,8 @@ public class MainPage {
         return true;
     }
 
-    // ССЫЛКИ
+
+    // ССЫЛКИ на страницы сайта
     @FindBy(xpath = "(//a[@class='footer-links__menu-link link'])[1]")
     private  WebElement linkForRestaurants;
     @FindBy(xpath = "(//a[@class='footer-links__menu-link link'])[2]")
@@ -90,13 +97,7 @@ public class MainPage {
     @FindBy(xpath = "(//a[@class='footer-links__menu-link link'])[5]")
     private WebElement linkContacts;
 
-
-
-    public void open(){ driver.get("https://www.delivery-club.ru/moscow");}
-
-    public void clickFiltersPanelButton(){ filtersPanel.click(); }
-
-    //  ПЕРЕХОДЫ ПО ССЫЛКАМ
+    //  ПЕРЕХОДЫ ПО ССЫЛКАМ на страницы сайта
     public void clickLinkForRestaurants(){ linkForRestaurants.click(); }
     public void clickLinkCouier(){ linkCouier.click(); }
     public void clickLinkPressCenter(){
@@ -110,4 +111,36 @@ public class MainPage {
     }
 
 
-}
+    // ССЫЛКИ на социальные сети
+    @FindBy(xpath = "//a[@class='footer-links__social-link footer-links__social-ok']")
+    private WebElement linkOk;
+
+
+    @FindBy(xpath = "//a[@class='footer-links__social-link footer-links__social-vk']")
+    private WebElement linkVk;
+
+
+    @FindBy(xpath = "//a[@class='footer-links__social-link footer-links__social-fb']")
+    private WebElement linkFasebook;
+
+    @FindBy(xpath = "//a[@class='footer-links__social-link footer-links__social-ig']")
+    private WebElement linkInst;
+
+
+
+    //  ПЕРЕХОДЫ на страницы на социальных сетей
+
+    public void clickLinkOk(){ linkOk.click();for ( String windowHandle : driver.getWindowHandles()){
+        driver.switchTo().window(windowHandle); } }
+
+    public void clickLinkVk(){ linkVk.click(); for ( String windowHandle : driver.getWindowHandles()){
+        driver.switchTo().window(windowHandle); } }
+
+    public void clickLinkFacebook() {
+        linkFasebook.click();
+        for ( String windowHandle : driver.getWindowHandles()){ driver.switchTo().window(windowHandle); } }
+
+    public void clickLinkInst() {
+        linkInst.click();
+        for ( String windowHandle : driver.getWindowHandles()){ driver.switchTo().window(windowHandle); } }
+    }

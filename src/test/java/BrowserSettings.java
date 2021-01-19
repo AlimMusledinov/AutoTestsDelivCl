@@ -15,6 +15,10 @@ public class BrowserSettings {
     public PressCenterPage pressCenterPage;
     public PromoPage promoPage;
     public ContactPage contactPage;
+    public OkPage okPage;
+    public FacebookPage faсebookPage;
+    public VkPage vkPage;
+    public InstPage instPage;
 
 
     @BeforeEach
@@ -27,6 +31,10 @@ public class BrowserSettings {
         pressCenterPage = new PressCenterPage(driver);
         promoPage = new PromoPage(driver);
         contactPage = new ContactPage(driver);
+        okPage = new OkPage(driver);
+        faсebookPage = new FacebookPage(driver);
+        vkPage = new VkPage(driver);
+        instPage = new InstPage(driver);
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
