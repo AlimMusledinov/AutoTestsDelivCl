@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class SmokeTestBuyingFood extends BrowserSettings{
@@ -8,10 +9,12 @@ public class SmokeTestBuyingFood extends BrowserSettings{
         mainPage.open();
         mainPage.inputAddressLocation("Варшавское шоссе 11");
         mainPage.searchByText("Subway");
-        mainPage.clickLogoSubway();
-        //Assertions.assertEquals("Subway", subwayPage.getTextTitleSubwayPage());
+        Assertions.assertEquals("Subway", subwayPage.getTextTitleSubwayPage());
         subwayPage.selectHotItalianSandwich15Cm();
-
+        subwayPage.selectallIngredients();
+        subwayPage.pressToIncreaseTheQuantity();
+        subwayPage.pressAddButton();
+        subwayPage.pressBuyButton();
     }
 
 }

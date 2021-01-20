@@ -19,8 +19,8 @@ public class MainPage {
 
     public void open(){ driver.get("https://www.delivery-club.ru/moscow");}
 
-    // указать адрес доставки для подбора доступных ресторанов
 
+    // Выборк лоакации для фильра ресторанов
     @FindBy(xpath = "//span[@class='icon__container address-input__icon']")
     public WebElement addressLocation;
     @FindBy(xpath = "//span[@class='address-input__location']")
@@ -137,6 +137,8 @@ public class MainPage {
     @FindBy(xpath = "(//a[@class='footer-links__menu-link link'])[5]")
     private WebElement linkContacts;
 
+
+
     //  ПЕРЕХОДЫ ПО ССЫЛКАМ на страницы сайта
     public void clickLinkForRestaurants(){ linkForRestaurants.click(); }
     public void clickLinkCouier(){ linkCouier.click(); }
@@ -161,9 +163,9 @@ public class MainPage {
     @FindBy(xpath = "(//a[@href='/srv/Subway_micluho'])[1]")
     private WebElement logoSubway;
 
-    //Переход на НА СТАРНИЦЫ РЕСТОРАНОВ
 
 
+    //Переход на НА СТРАНИЦЫ РЕСТОРАНОВ
     public void clickLogoSubway(){
         logoSubway.click();
     }

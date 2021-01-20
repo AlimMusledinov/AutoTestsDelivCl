@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,12 +37,6 @@ public class SubwayPage {
 
     // СЭНДВИЧИ - опции
 
-    @FindBy(xpath = "//span[text()='С сыром']")
-    private WebElement withCheese;
-
-    @FindBy(xpath = "//span[text()='Оливки']")
-    private WebElement olives;
-
     @FindBy(xpath = "//span[text()='Зерновой']")
     private WebElement grainBread;
 
@@ -54,38 +49,49 @@ public class SubwayPage {
     @FindBy(xpath = "(//label[@class ='label--def ingredients-list__label']//span[text()='Кетчуп'])[3]")
     private WebElement ketchup;
 
-    @FindBy(xpath = "//span[text()='Да']")
+    @FindBy(xpath = "//span[text()='Нет']")
     private WebElement notToastedSandwich;
 
-    @FindBy(xpath = "//input[@type='checkbox']")
+    @FindBy(xpath = "//span[@class='ingredients-list__ingredient-name']")
     private List<WebElement> allIngredients;
 
+    @FindBy(xpath = "//button[@class='product-quantity-controls__plus btn-light-gray--plus']")
+    private WebElement theAddButton;
+
+    @FindBy(xpath = "//button[@class='product-quantity-controls__plus btn-light-gray--plus']")
+    private WebElement toIncreaseTheQuantity;
+
+    @FindBy(xpath = "//button[@class='green-btn--md product-popup__add']")
+    private WebElement addButton;
+
+    @FindBy(xpath = "//button[@class='green-btn--md btn--with-right-block basket-button-submit__btn']")
+    private WebElement buyButton;
 
     //Выбор сэндвичей с дополнениями
 
-    public void selectParametersHotItalianSandwich15Cm() {
-        withCheese.click();
-        olives.click();
-        grainBread.click();
-        mayonnaise.click();
-        barbecue.click();
-        ketchup.click();
-        notToastedSandwich.click();
+    public void selectHotItalianSandwich15Cm() {
+        //driver.switchTo().activeElement().click();
+        hotItalianSandwich15Cm.click();
     }
 
-    public void selectSllIngredients() {
+//  driver.switchTo().activeElement().sendKeys(adress);
+    public void selectallIngredients() {
         for (WebElement checkBoxes : allIngredients) {
             checkBoxes.click();
         }
     }
 
-    public void selectHotItalianSandwich15Cm() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        hotItalianSandwich15Cm.click();
-
+    public void pressToIncreaseTheQuantity(){
+        toIncreaseTheQuantity.click();
+        toIncreaseTheQuantity.click();
+        toIncreaseTheQuantity.click();
     }
+    public void pressAddButton(){
+        addButton.click();
+    }
+
+    public void pressBuyButton(){
+        buyButton.click();
+    }
+
 }
