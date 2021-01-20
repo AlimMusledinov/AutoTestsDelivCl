@@ -19,6 +19,7 @@ public class BrowserSettings {
     public FacebookPage faсebookPage;
     public VkPage vkPage;
     public InstPage instPage;
+    public SubwayPage subwayPage;
 
 
     @BeforeEach
@@ -35,14 +36,15 @@ public class BrowserSettings {
         faсebookPage = new FacebookPage(driver);
         vkPage = new VkPage(driver);
         instPage = new InstPage(driver);
+        subwayPage = new SubwayPage(driver);
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
 
-    @AfterEach
-       public void closeBrowser(){
-       driver.quit();
-  }
+    //@AfterEach
+     //  public void closeBrowser(){
+     //  driver.quit();
+ // }
 }

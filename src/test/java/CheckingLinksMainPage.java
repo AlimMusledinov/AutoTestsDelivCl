@@ -32,7 +32,7 @@ public class CheckingLinksMainPage extends BrowserSettings {
     public void openLinkPressCenter(){
         mainPage.open();
         mainPage.clickLinkPressCenter();
-        Assertions.assertEquals("Пресс-центр", pressCenterPage.getTextTitlePressCenter());
+        Assertions.assertEquals("СМИ о нас", pressCenterPage.getTextTitlePressCenter());
     }
     @Epic("Тестирование главной страницы сайта https://www.delivery-club.ru/moscow")
     @Feature("Проверка ссылок на главной странице")

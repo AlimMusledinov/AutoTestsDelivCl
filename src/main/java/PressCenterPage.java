@@ -12,7 +12,7 @@ public class PressCenterPage {
 
     WebDriver driver;
 
-    @FindBy(xpath = "//div[@field='tn_text_1568887516902']")
+    @FindBy(xpath = "//a[text()='СМИ о нас']")
     private WebElement titlePressCenter;
 
     public String getTextTitlePressCenter(){

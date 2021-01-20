@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import javax.print.DocFlavor;
 import java.util.List;
 
 public class MainPage {
@@ -17,6 +19,36 @@ public class MainPage {
 
     public void open(){ driver.get("https://www.delivery-club.ru/moscow");}
 
+    // указать адрес доставки для подбора доступных ресторанов
+
+    @FindBy(xpath = "//span[@class='icon__container address-input__icon']")
+    public WebElement addressLocation;
+    @FindBy(xpath = "//span[@class='address-input__location']")
+    public WebElement selectAddressLocation;
+
+
+    public void inputAddressLocation(String adress){
+        addressLocation.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.switchTo().activeElement().sendKeys(adress);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.switchTo().activeElement().sendKeys(Keys.ENTER);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 
@@ -24,13 +56,21 @@ public class MainPage {
     @FindBy(xpath = "//input[@class='vendors-suggests__input']")
     public WebElement theSearchForm;
 
+    @FindBy(xpath = "//span[@class='vendors-suggest-item__title']")
+    public WebElement selectRez;
+
     @FindBy(xpath = "(//div[@class='vendor-item-products__title'])[1]")
     public WebElement logoPivbum;
 
     // Поиск по тексту
     public void searchByText(String text){
         theSearchForm.sendKeys(text);
-        theSearchForm.sendKeys(Keys.ENTER);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        selectRez.click();
     }
     public String getTextLogoPivbum(){
         String value = logoPivbum.getText();
@@ -102,6 +142,11 @@ public class MainPage {
     public void clickLinkCouier(){ linkCouier.click(); }
     public void clickLinkPressCenter(){
         linkPressCenter.click();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     public void clickLinkPromo(){
         linkPromo.click();
@@ -109,6 +154,21 @@ public class MainPage {
     public void clickLinkContacts(){
         linkContacts.click();
     }
+
+
+    //СCЫЛКИ НА РЕСТОРАНЫ
+
+    @FindBy(xpath = "(//a[@href='/srv/Subway_micluho'])[1]")
+    private WebElement logoSubway;
+
+    //Переход на НА СТАРНИЦЫ РЕСТОРАНОВ
+
+
+    public void clickLogoSubway(){
+        logoSubway.click();
+    }
+
+
 
 
     // ССЫЛКИ на социальные сети
@@ -131,7 +191,8 @@ public class MainPage {
     //  ПЕРЕХОДЫ на страницы на социальных сетей
 
     public void clickLinkOk(){ linkOk.click();for ( String windowHandle : driver.getWindowHandles()){
-        driver.switchTo().window(windowHandle); } }
+        driver.switchTo().window(windowHandle);
+    } }
 
     public void clickLinkVk(){ linkVk.click(); for ( String windowHandle : driver.getWindowHandles()){
         driver.switchTo().window(windowHandle); } }
