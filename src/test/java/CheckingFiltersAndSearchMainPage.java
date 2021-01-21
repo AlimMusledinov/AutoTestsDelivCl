@@ -35,7 +35,7 @@ public class CheckingFiltersAndSearchMainPage extends BrowserSettings{
     @Test
     public void searchByText(){
         mainPage.open();
-        mainPage.searchByText("Пивбум");
+        mainPage.searchByText1("Пивбум");
         Assertions.assertEquals("Пивбум", mainPage.getTextLogoPivbum());
     }
 }

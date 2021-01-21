@@ -20,10 +20,11 @@ public class BrowserSettings {
     public VkPage vkPage;
     public InstPage instPage;
     public SubwayPage subwayPage;
+    public CheckoutPage checkoutPage;
 
 
     @BeforeEach
-    public void startBrowser(){
+    public void startBrowser() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
@@ -37,14 +38,15 @@ public class BrowserSettings {
         vkPage = new VkPage(driver);
         instPage = new InstPage(driver);
         subwayPage = new SubwayPage(driver);
+        checkoutPage = new CheckoutPage(driver);
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
 
-    //@AfterEach
-     //  public void closeBrowser(){
-     //  driver.quit();
- // }
+    @AfterEach
+    public void closeBrowser() {
+        driver.quit();
+    }
 }

@@ -81,7 +81,7 @@ public class SubwayPage {
         }
     }
 
-    public void pressToIncreaseTheQuantity(){
+    public void pressToIncreaseTheQuantityBy4(){
         toIncreaseTheQuantity.click();
         toIncreaseTheQuantity.click();
         toIncreaseTheQuantity.click();

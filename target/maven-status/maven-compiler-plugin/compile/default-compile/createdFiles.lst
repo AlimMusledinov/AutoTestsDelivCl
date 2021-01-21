@@ -1,11 +1,12 @@
-ContactPage.class
-InstPage.class
 MainPage.class
-SubwayPage.class
-VkPage.class
 OkPage.class
 PressCenterPage.class
 JobCourierPage.class
+PromoPage.class
+ContactPage.class
+InstPage.class
+SubwayPage.class
+VkPage.class
 PartnersPage.class
 FacebookPage.class
-PromoPage.class
+CheckoutPage.class
